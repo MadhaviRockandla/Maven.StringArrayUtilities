@@ -1,5 +1,6 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -77,8 +78,13 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPalindromic(String[] array)
     {
-       String[] reverse = new String[array.length];
-        return Arrays.equals(array, reverse(array));
+        int len = array.length;
+        for(int i =0; i< (len/2);i++){
+            if(!array[i].equals(array[len - i - 1])){
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -95,14 +101,14 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-
-        int occurance = 0;
-        for (int i = 0; i < array.length; i++)
-            if (array[i].equals(value)) {
-                occurance++;
+            int count = 0;
+            for(int i = 0; i < array.length; i++){
+                if(array[i].equals(value)){
+                    count++;
+                }
             }
-        return occurance;
-    }
+            return count;
+        }
 
     /**
      * @param array         array of String objects
@@ -110,17 +116,35 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
-    }
+
+            String[] result = new String[array.length-1];
+            int resultIndex = 0;
+            for(int i = 0; i < array.length; i++){
+                if(!array[i].equals(valueToRemove)){
+                    result[resultIndex++] = array[i];
+                }
+            }
+            return result;
+        }
+
 
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
-    }
+        {
+            ArrayList<String> list = new ArrayList<>();
+            for (int i = 0; i < array.length - 1; i++) {
+                if (!array[i].equals(array[i + 1])) {
+                    list.add(array[i]);
+                }
+            }
+            list.add(array[array.length - 1]);
+            return list.toArray(new String[list.size()]);
+        }
 
+    }
     /**
      * @param array array of chars
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
