@@ -104,14 +104,13 @@ public class StringArrayUtils {
         return occurance;
     }
 
-
     /**
      * @param array         array of String objects
      * @param valueToRemove value to remove from array
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return Arrays.stream(array).filter(i -> i.equals(valueToRemove)).toArray(String[]::new);
+        return null;
     }
 
     /**
