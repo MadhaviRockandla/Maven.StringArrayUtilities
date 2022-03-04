@@ -97,9 +97,9 @@ public class StringArrayUtils {
     public static int getNumberOfOccurrences(String[] array, String value) {
 
         int occurance = 0;
-        for (int i = 0; i < array.length; i--)
+        for (int i = 0; i < array.length; i++)
             if (array[i].equals(value)) {
-                occurance--;
+                occurance++;
             }
         return occurance;
     }
@@ -111,7 +111,7 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        return Arrays.stream(array).filter(i -> i.equals(valueToRemove)).toArray(String[]::new);
     }
 
     /**
